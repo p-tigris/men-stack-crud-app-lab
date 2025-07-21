@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Planet</title>
+</head>
+<body>
+    <h1>Add New Planet</h1>
+    <form action="/planets" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" /><br>
+
+        <br>
+
+        <label for="composition">Composition:</label><br>
+        <input type="radio" name="composition" id="terrestrial" />
+        <label for="terrestrial">Terrestrial</label><br>
+        <input type="radio" name="composition" id="jovian" />
+        <label for="jovian">Jovian</label><br>
+        <input type="radio" name="composition" id="trans-neptunian" />
+        <label for="trans-neptunian">Trans-Neptunian</label><br>
+
+        <br>
+
+        <label for="moons">Number of moons:</label>
+        <input type="number" name="number" id="number" /><br>
+
+        <br>
+
+        <label for="isDwarfPlanet">Is it a dwarf planet?</label>
+        <input type="checkbox" name="isDwarfPlanet" id="isDwarfPlanet" /><br>
+
+        <br>
+
+        <button type="submit">Add Planet</button>
+    </form>
+</body>
+</html>
