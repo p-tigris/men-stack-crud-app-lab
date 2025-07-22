@@ -47,6 +47,11 @@ app.post('/planets', async (req, res)=> {
     res.redirect('/planets/');
 });
 
+app.delete('/planets/:planetId', async (req, res) => {
+    await Planet.findByIdAndDelete(req.params.planetId);
+    res.redirect('/planets/');
+})
+
 app.get('/planets/:planetId/edit', async (req, res) => {
     const foundPlanet = await Planet.findById(req.params.planetId);
 

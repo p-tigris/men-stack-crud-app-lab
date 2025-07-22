@@ -9,7 +9,11 @@
     <h1><%= planet.name %></h1>
     <p>A <%= planet.composition %> <%= planet.isDwarfPlanet ? 'dwarf' : '' %> planet in our Solar System.</p>
     <p>It has <%= planet.moons %> moon(s)!</p>
-    
+
+    <form action="/planets/<%= planet._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= planet.name %></button>
+    </form>
+    <br>
     <a href="/">Home</a>
     <a href="/planets/<%= planet._id %>/edit">Edit Planet</a>
     <a href="/planets/">Back to Planets</a>
