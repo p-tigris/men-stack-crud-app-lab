@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= planet.name %></title>
+</head>
+<body>
+    <h1>Edit <%= planet.name %></h1>
+    <form action="planets/<%= planet._id %>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= planet.name %>" />
+
+        <br><br>
+
+        <label for="composition">Composition:</label>
+        <select name="composition" id="composition">
+            <option value="terrestrial" <%= planet.composition === 'terrestrial' ? 'selected' : '' %>>Terrestrial</option>
+            <option value="jovian" <%= planet.composition === 'jovian' ? 'selected' : '' %>>Jovian</option>
+            <option value="trans-neptunian" <%= planet.composition === 'trans-neptunian' ? 'selected' : '' %>>Trans-Neptunian</option>
+        </select>
+        
+        <br><br>
+
+        <label for="moons">Number of moons:</label>
+        <input type="number" name="moons" id="moons" value="<%= planet.moons %>"/>
+        
+        <br><br>
+
+    <label for="isDwarfPlanet">Is it a dwarf planet?</label>
+    <input 
+        type="checkbox" 
+        name="isDwarfPlanet" 
+        id="isDwarfPlanet" 
+        <% if (planet.isDwarfPlanet) { %> 
+            checked 
+        <% }%>
+    />
+
+        <br><br>
+
+    <button type="submit">Update Planet</button>
+    </form>
+    <br><br>
+    <a href="/planets/">Back to Planets</a>
+</body>
+</html>

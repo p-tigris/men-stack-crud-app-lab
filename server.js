@@ -51,6 +51,12 @@ app.post('/planets', async (req, res)=> {
     res.redirect('/planets/');
 });
 
+app.get('/planets/:planetId/edit', async (req, res) => {
+    const foundPlanet = await Planet.findById(req.params.planetId);
+
+    res.render('planets/edit.ejs', { planet: foundPlanet });
+})
+
 app.listen((3000), () => {
     console.log('Listening on port 3000');
 });

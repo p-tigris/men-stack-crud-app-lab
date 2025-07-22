@@ -13,7 +13,8 @@
         <p>A <%= planet.composition %> planet in our Solar System.</p>
     <% } %>
     <p>It has <%= planet.moons %> moon(s)!</p>
-
+    
+    <a href="/planets/<%= planet._id %>/edit">Edit Planet</a>
     <a href="/planets/">Back to Planets</a>
 </body>
 </html>
