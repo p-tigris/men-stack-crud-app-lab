@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= planet.name %></title>
+</head>
+<body>
+    <h1><%= planet.name %></h1>
+    <% if (planet.isDwarfPlanet) { %>
+        <p>A <%= planet.composition %> dwarf planet in our Solar System.</p>
+    <% } else { %>
+        <p>A <%= planet.composition %> planet in our Solar System.</p>
+    <% } %>
+    <p>It has <%= planet.moons %> moon(s)!</p>
+
+    <a href="/planets/">Back to Planets</a>
+</body>
+</html>

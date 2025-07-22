@@ -22,17 +22,23 @@ app.use(morgan('dev'));
 
 app.get('/', async (req, res) => {
     res.render("index.ejs");
-})
+});
 
 app.get('/planets', async (req, res) => {
     const allPlanets = await Planet.find({})
 
     res.render("planets/index.ejs", { planets: allPlanets });
-})
+});
 
 app.get('/planets/new', async (req, res) => {
     res.render("planets/new.ejs");
-})
+});
+
+app.get('/planets/:planetId', async (req, res) => {
+    const foundPlanet = await Planet.findById(req.params.planetId);
+
+    res.render('planets/show.ejs', { planet: foundPlanet });
+});
 
 app.post('/planets', async (req, res)=> {
     if (req.body.isDwarfPlanet === 'on') {
@@ -43,8 +49,8 @@ app.post('/planets', async (req, res)=> {
 
     await Planet.create(req.body);
     res.redirect('/planets/');
-})
+});
 
 app.listen((3000), () => {
     console.log('Listening on port 3000');
-})
+});
