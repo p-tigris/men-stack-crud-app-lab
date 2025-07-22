@@ -7,13 +7,10 @@
 </head>
 <body>
     <h1><%= planet.name %></h1>
-    <% if (planet.isDwarfPlanet) { %>
-        <p>A <%= planet.composition %> dwarf planet in our Solar System.</p>
-    <% } else { %>
-        <p>A <%= planet.composition %> planet in our Solar System.</p>
-    <% } %>
+    <p>A <%= planet.composition %> <%= planet.isDwarfPlanet ? 'dwarf' : '' %> planet in our Solar System.</p>
     <p>It has <%= planet.moons %> moon(s)!</p>
     
+    <a href="/">Home</a>
     <a href="/planets/<%= planet._id %>/edit">Edit Planet</a>
     <a href="/planets/">Back to Planets</a>
 </body>
