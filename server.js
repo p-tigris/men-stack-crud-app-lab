@@ -41,11 +41,7 @@ app.get('/planets/:planetId', async (req, res) => {
 });
 
 app.post('/planets', async (req, res)=> {
-    if (req.body.isDwarfPlanet === 'on') {
-        req.body.isDwarfPlanet = true;
-    } else {
-        req.body.isDwarfPlanet = false;
-    }
+    req.body.isDwarfPlanet = (req.body.isDwarfPlanet === 'on');
 
     await Planet.create(req.body);
     res.redirect('/planets/');
@@ -55,7 +51,14 @@ app.get('/planets/:planetId/edit', async (req, res) => {
     const foundPlanet = await Planet.findById(req.params.planetId);
 
     res.render('planets/edit.ejs', { planet: foundPlanet });
-})
+});
+
+app.put('/planets/:planetId', async (req, res) => {
+    req.body.isDwarfPlanet = (req.body.isDwarfPlanet === 'on');
+
+    await Planet.findByIdAndUpdate(req.params.planetId, req.body);
+    res.redirect(`/planets/${req.params.planetId}`);
+});
 
 app.listen((3000), () => {
     console.log('Listening on port 3000');
