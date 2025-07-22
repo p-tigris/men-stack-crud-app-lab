@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     res.render("index.ejs");
 })
 
@@ -32,6 +32,17 @@ app.get('/planets', async (req, res) => {
 
 app.get('/planets/new', async (req, res) => {
     res.render("planets/new.ejs");
+})
+
+app.post('/planets', async (req, res)=> {
+    if (req.body.isDwarfPlanet === 'on') {
+        req.body.isDwarfPlanet = true;
+    } else {
+        req.body.isDwarfPlanet = false;
+    }
+
+    await Planet.create(req.body);
+    res.redirect('/planets/');
 })
 
 app.listen((3000), () => {

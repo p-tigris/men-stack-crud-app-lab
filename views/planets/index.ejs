@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>All Planets</h1>
-    <a href="/planets/new">All New Planet</a>
+    <a href="/planets/new">Add New Planet</a>
     <ul>
         <% planets.forEach(planet => { %>
-            <p><%= planet.name %></p>
+            <li><%= planet.name %></li>
         <% }) %>
     </ul>
 </body>
